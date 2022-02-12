@@ -10,6 +10,7 @@
 body,
 html {
   letter-spacing: -0.4px;
+  height: 100%;
 }
 
 .dark html {
