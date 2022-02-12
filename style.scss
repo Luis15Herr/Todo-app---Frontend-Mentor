@@ -1,0 +1,434 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: color 0.2s;
+}
+$BrightBlue: hsl(220, 98%, 61%);
+$CheckBackground: linear-gradient (90deg, #57ddff, #c058f3);
+
+//Theme
+
+$lightThemeWhite: hsl(0, 0%, 98%);
+$lightThemeGray: hsl(236, 33%, 92%);
+$lightThemeGray1: hsl(233, 11%, 84%);
+$lightThemeGray2: hsl(236, 9%, 61%);
+$lightThemeDark: hsl(235, 19%, 35%);
+
+//Dark Theme
+$darkThemeBlue: hsl(235, 21%, 11%);
+$darkThemeBlue2: hsl(235, 24%, 19%);
+$darkThemeLightBlue: hsl(234, 39%, 85%);
+$darkThemeLightBluehover: hsl(236, 33%, 92%);
+$DarkGrayishBlue: hsl(234, 11%, 52%);
+$VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+$VeryDarkGrayishBlue1: hsl(237, 14%, 26%);
+
+body,
+html {
+  letter-spacing: -0.4px;
+}
+
+.dark html {
+  background-color: $darkThemeBlue;
+}
+.light html {
+  background-color: $lightThemeWhite;
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+#app.dark {
+  background-image: url(./images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-color: $darkThemeBlue;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s;
+}
+
+#app.light {
+  background-image: url(./images/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-color: $lightThemeWhite;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s;
+}
+
+.todo-container {
+  margin-top: 78px;
+  width: 540px;
+  text-align: center;
+}
+.todo__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 41px;
+}
+
+.todo__tittle {
+  letter-spacing: 16px;
+  display: inline;
+  font-size: 2.16em;
+  color: white;
+}
+.todo__input {
+  grid-template-columns: 70px 1fr;
+  display: grid;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  align-items: center;
+}
+.dark .todo__input,
+.dark .todo__input input {
+  background-color: $darkThemeBlue2;
+  color: $darkThemeLightBlue;
+  &::placeholder {
+    color: $DarkGrayishBlue;
+  }
+}
+
+.light .todo__input {
+  background-color: $lightThemeWhite;
+}
+
+.light .todo__input input {
+  color: $lightThemeDark;
+  &::placeholder {
+    color: $lightThemeGray2;
+  }
+}
+
+.todo__input input {
+  font-family: "Josefin Sans", sans-serif;
+  width: 100%;
+  padding: 22px 0px;
+  border: none;
+  font-size: 1em;
+  outline: none;
+}
+.todo__list-container {
+  border-radius: 5px;
+}
+.dark .todo__list-container {
+  background-color: $darkThemeBlue2;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 19px 30px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.light .todo__list-container {
+  background-color: $lightThemeWhite;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.todo__list {
+  list-style: none;
+  text-align: left;
+}
+
+.todo__list li {
+  width: 100%;
+  padding: 20px 0px;
+  align-items: center;
+  grid-template-columns: 70px 1fr 70px;
+  display: grid;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  font-size: 1.02em;
+  &:hover {
+    cursor: grab;
+    .todo__delete {
+      display: block;
+    }
+  }
+}
+
+.dark .todo__list li {
+  border-bottom: 1px solid $VeryDarkGrayishBlue1;
+  color: $darkThemeLightBlue;
+}
+.light .todo__list li {
+  border-bottom: 1px solid $lightThemeGray1;
+  color: $lightThemeDark;
+}
+
+.dark .completed {
+  text-decoration: line-through;
+  color: $VeryDarkGrayishBlue !important;
+}
+
+.light .completed {
+  text-decoration: line-through;
+  color: $lightThemeGray1 !important;
+}
+
+.rounded {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.rounded a {
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 2px;
+  height: 24px;
+  left: 0;
+  position: relative;
+  top: 0;
+  width: 24px;
+
+  &:hover {
+    height: 24px;
+    width: 24px;
+    background-image: linear-gradient(130deg, #57ddff, #c058f3);
+    border: 0 !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.dark .rounded a {
+  border: 1px solid $VeryDarkGrayishBlue1;
+  &:hover {
+    &::after {
+      background-color: $darkThemeBlue2;
+    }
+  }
+}
+.light .rounded a {
+  border: 1px solid $lightThemeGray1;
+  &:hover {
+    &::after {
+      background-color: $lightThemeWhite;
+    }
+  }
+}
+.completed .rounded a {
+  border: none;
+}
+.checked {
+  background-color: blue;
+  background-image: linear-gradient(130deg, #57ddff, #c058f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    &::after {
+      background-color: transparent !important;
+    }
+  }
+}
+
+.todo__delete {
+  display: block;
+}
+
+.todo__delete a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  height: 50px;
+}
+
+.light .todo__bottom {
+  color: $lightThemeGray2;
+}
+.dark .todo__bottom {
+  color: $VeryDarkGrayishBlue;
+}
+.attribution {
+  font-size: 15px;
+  position: absolute;
+  bottom: 15px;
+}
+.dark .attribution {
+  color: $VeryDarkGrayishBlue;
+  a {
+    color: $DarkGrayishBlue;
+  }
+}
+.light .attribution {
+  color: $lightThemeGray2;
+  a {
+    color: $lightThemeDark;
+  }
+}
+.todo__counter {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.mobile-controls {
+  display: none;
+}
+.todo__controls {
+  display: flex;
+  list-style: none;
+  margin-left: 35px;
+}
+
+.todo__controls li {
+  margin-right: 20px;
+  font-size: 0.8em;
+  font-weight: 700;
+  &:last-child {
+    margin: 0;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+.dark .todo__controls li {
+  &:hover {
+    color: $darkThemeLightBlue;
+  }
+}
+
+.light .todo__controls li {
+  &:hover {
+    color: $lightThemeDark;
+  }
+}
+
+.active {
+  color: $BrightBlue;
+  &:hover {
+    color: $BrightBlue !important;
+  }
+}
+
+.todo__clear {
+  font-size: 0.8em;
+}
+
+.dark .todo__clear {
+  &:hover {
+    color: $darkThemeLightBlue;
+    cursor: pointer;
+  }
+}
+.light .todo__clear {
+  &:hover {
+    color: $lightThemeDark;
+    cursor: pointer;
+  }
+}
+
+.info {
+  display: block;
+  margin: 48px;
+  font-size: 0.8em;
+}
+
+.light .info {
+  color: $lightThemeGray2;
+}
+
+.dark .info {
+  color: $VeryDarkGrayishBlue;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    height: 100%;
+  }
+  .todo-container {
+    width: 330px;
+    margin-top: 45px;
+  }
+  .todo__tittle {
+    letter-spacing: 11px;
+    font-size: 1.4em;
+  }
+  .todo__top {
+    margin-bottom: 31px;
+  }
+  .todo__input {
+    grid-template-columns: 55px 1fr;
+  }
+  .todo__input input {
+    padding: 15px 0;
+    font-size: 0.7em;
+  }
+  .todo__list li {
+    grid-template-columns: 55px 1fr 55px;
+    font-size: 0.7em;
+  }
+  .todo__delete {
+    display: block;
+    a {
+      img {
+        width: 12px;
+      }
+    }
+  }
+
+  .todo__controls {
+    display: none;
+  }
+  .mobile-controls {
+    background-color: white;
+    margin-top: 15px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  .light .mobile-controls {
+    color: $lightThemeGray2;
+    background-color: $lightThemeWhite;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  .dark .mobile-controls {
+    color: $VeryDarkGrayishBlue;
+    background-color: $darkThemeBlue2;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 19px 30px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+
+  .mobile-controls .todo__controls {
+    display: flex;
+  }
+
+  .rounded a {
+    height: 19px;
+    width: 19px;
+    &:hover {
+      height: 19px;
+      width: 19px;
+      &::after {
+        content: "";
+
+        width: 17px;
+        height: 17px;
+      }
+    }
+  }
+
+  .info {
+    margin: 40px 0;
+  }
+}

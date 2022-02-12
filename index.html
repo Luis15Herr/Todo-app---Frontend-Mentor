@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+  </head>
+  <body class="container">
+    <div id="app" :class="darkTheme ? 'dark' : 'light'">
+      <div class="todo-container">
+        <div class="todo">
+          <div class="todo__top">
+            <h1 class="todo__tittle">TODO</h1>
+            <a
+              @click="themeSwitcher"
+              v-if="darkTheme === true"
+              href="#"
+              class="theme-toggle-dark"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+                <path
+                  fill="#FFF"
+                  fill-rule="evenodd"
+                  d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"
+                />
+              </svg>
+            </a>
+            <a
+              @click="themeSwitcher"
+              v-else
+              href="#"
+              class="theme-toggle-lighta"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+                <path
+                  fill="#FFF"
+                  fill-rule="evenodd"
+                  d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="todo__input">
+            <div class="rounded">
+              <a href="#"> </a>
+            </div>
+            <input
+              v-model="createTodoInput"
+              type="text"
+              placeholder="Create a new todo..."
+              @keyup.enter="push()"
+            />
+          </div>
+          <div class="todo__list-container">
+            <ul class="todo__list">
+              <li
+                v-for="(item,index) in filteredList"
+                :key="index"
+                :class="{completed : item.checked}"
+              >
+                <div class="rounded">
+                  <a
+                    :class="{checked : item.checked}"
+                    href="#"
+                    @click="check(item.id)"
+                  >
+                    <svg
+                      v-if="item.checked"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="9"
+                    >
+                      <path
+                        fill="none"
+                        stroke="#FFF"
+                        stroke-width="2"
+                        d="M1 4.304L3.696 7l6-6"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                {{item.text}}
+                <div class="todo__delete">
+                  <a href="#" @click="deleteTodo(item.id)">
+                    <img src="./images/icon-cross.svg" alt="" />
+                  </a>
+                </div>
+              </li>
+            </ul>
+            <div class="todo__bottom">
+              <span class="todo__counter">{{detectItemLeft}} items left</span>
+              <ul class="todo__controls">
+                <li
+                  v-for="item in options"
+                  :class="{active : optionActive === item.name}"
+                  @click="filterList(item.name)"
+                >
+                  {{item.name}}
+                </li>
+              </ul>
+              <a class="todo__clear" @click="clearChecked()">Clear Completed</a>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-controls">
+          <ul class="todo__controls">
+            <li
+              v-for="item in options"
+              :class="{active : optionActive === item.name}"
+              @click="filterList(item.name)"
+            >
+              {{item.name}}
+            </li>
+          </ul>
+        </div>
+        <span class="info"> Drag and drop to reorder list</span>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >.
+        <a target="_blank" href="https://www.instagram.com/luisherrerael"
+          >Luis Herrera⚡</a
+        >.
+      </div>
+    </div>
+
+    <script src="./js.js"></script>
+  </body>
+</html>
