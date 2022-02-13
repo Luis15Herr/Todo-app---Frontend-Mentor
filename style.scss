@@ -40,26 +40,24 @@ body {
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
 }
-#app.dark {
+.dark {
   background-image: url(./images/bg-desktop-dark.jpg);
   background-repeat: no-repeat;
   background-position-x: center;
   background-color: $darkThemeBlue;
-  display: flex;
-  justify-content: center;
-  height: 100%;
   transition: background 0.5s;
 }
 
-#app.light {
+.light {
   background-image: url(./images/bg-desktop-light.jpg);
   background-repeat: no-repeat;
   background-position-x: center;
   background-color: $lightThemeWhite;
+  transition: background 0.5s;
+}
+#app {
   display: flex;
   justify-content: center;
-  height: 100%;
-  transition: background 0.5s;
 }
 
 .todo-container {
@@ -434,9 +432,5 @@ body {
 
   .info {
     margin: 40px 0;
-  }
-  html,
-  body {
-    height: auto;
   }
 }

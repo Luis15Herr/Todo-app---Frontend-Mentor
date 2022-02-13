@@ -26,36 +26,31 @@ body {
   font-size: 18px;
 }
 
-#app.dark {
+.dark {
   background-image: url(./images/bg-desktop-dark.jpg);
   background-repeat: no-repeat;
   background-position-x: center;
   background-color: #161722;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100%;
   -webkit-transition: background 0.5s;
   transition: background 0.5s;
 }
 
-#app.light {
+.light {
   background-image: url(./images/bg-desktop-light.jpg);
   background-repeat: no-repeat;
   background-position-x: center;
   background-color: #fafafa;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+
+#app {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100%;
-  -webkit-transition: background 0.5s;
-  transition: background 0.5s;
 }
 
 .todo-container {
@@ -519,10 +514,6 @@ body {
   }
   .info {
     margin: 40px 0;
-  }
-  html,
-  body {
-    height: auto;
   }
 }
 /*# sourceMappingURL=style.css.map */

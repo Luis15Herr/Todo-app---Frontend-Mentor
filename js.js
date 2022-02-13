@@ -15,7 +15,7 @@ var app = new Vue({
     createTodoInput: "",
     itemLeft: null,
     lastSelection: null,
-    darkTheme: true,
+    darkTheme: false,
   },
   methods: {
     createItem(text) {
@@ -80,6 +80,13 @@ var app = new Vue({
     },
     themeSwitcher() {
       this.darkTheme = !this.darkTheme;
+      if (this.darkTheme) {
+        document.body.classList.add("dark");
+        document.body.classList.remove("light");
+      } else {
+        document.body.classList.remove("dark");
+        document.body.classList.add("light");
+      }
     },
   },
   computed: {
@@ -95,6 +102,7 @@ var app = new Vue({
   },
   created: function () {
     this.filterList("All");
+    this.themeSwitcher();
   },
   mounted: function () {
     let draggable = document.querySelector(".todo__list");
