@@ -27,7 +27,7 @@ $VeryDarkGrayishBlue1: hsl(237, 14%, 26%);
 body,
 html {
   letter-spacing: -0.4px;
-  height: 800px;
+  height: 100%;
 }
 
 .dark html {
@@ -58,6 +58,8 @@ body {
 #app {
   display: flex;
   justify-content: center;
+  height: 100%;
+  align-items: center;
 }
 
 .todo-container {
@@ -65,7 +67,6 @@ body {
   width: 100%;
 }
 .todo {
-  margin-top: 78px;
   width: 540px;
 }
 .todo__top {

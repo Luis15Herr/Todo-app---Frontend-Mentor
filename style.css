@@ -10,7 +10,7 @@
 body,
 html {
   letter-spacing: -0.4px;
-  height: 800px;
+  height: 100%;
 }
 
 .dark html {
@@ -51,6 +51,10 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .todo-container {
@@ -59,7 +63,6 @@ body {
 }
 
 .todo {
-  margin-top: 78px;
   width: 540px;
 }
 
