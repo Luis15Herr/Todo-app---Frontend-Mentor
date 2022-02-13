@@ -59,9 +59,13 @@ body {
 }
 
 .todo-container {
+  text-align: center;
+  width: 100%;
+}
+
+.todo {
   margin-top: 78px;
   width: 540px;
-  text-align: center;
 }
 
 .todo__top {
@@ -438,7 +442,7 @@ body {
   html {
     height: 100%;
   }
-  .todo-container {
+  .todo {
     width: 330px;
     margin-top: 45px;
   }
@@ -515,6 +519,10 @@ body {
   }
   .info {
     margin: 40px 0;
+  }
+  html,
+  body {
+    height: auto;
   }
 }
 /*# sourceMappingURL=style.css.map */

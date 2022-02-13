@@ -26,8 +26,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
   </head>
   <body class="container">
-    <div id="app" :class="darkTheme ? 'dark' : 'light'">
-      <div class="todo-container">
+    <div
+      id="app"
+      :class="[darkTheme ? 'dark' : 'light', test]"
+      class="todo-container"
+    >
         <div class="todo">
           <div class="todo__top">
             <h1 class="todo__tittle">TODO</h1>
@@ -119,28 +122,28 @@
               <a class="todo__clear" @click="clearChecked()">Clear Completed</a>
             </div>
           </div>
+          <div class="mobile-controls">
+            <ul class="todo__controls">
+              <li
+                v-for="item in options"
+                :class="{active : optionActive === item.name}"
+                @click="filterList(item.name)"
+              >
+                {{item.name}}
+              </li>
+            </ul>
+          </div>
+          <span class="info"> Drag and drop to reorder list</span>
         </div>
-        <div class="mobile-controls">
-          <ul class="todo__controls">
-            <li
-              v-for="item in options"
-              :class="{active : optionActive === item.name}"
-              @click="filterList(item.name)"
-            >
-              {{item.name}}
-            </li>
-          </ul>
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >.
+          <a target="_blank" href="https://www.instagram.com/luisherrerael"
+            >Luis Herrera⚡</a
+          >.
         </div>
-        <span class="info"> Drag and drop to reorder list</span>
-      </div>
-      <div class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >.
-        <a target="_blank" href="https://www.instagram.com/luisherrerael"
-          >Luis Herrera⚡</a
-        >.
       </div>
     </div>
 
