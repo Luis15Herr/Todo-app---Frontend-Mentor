@@ -59,7 +59,6 @@ body {
   display: flex;
   justify-content: center;
   height: 100%;
-  align-items: center;
 }
 
 .todo-container {
@@ -67,6 +66,7 @@ body {
   width: 100%;
 }
 .todo {
+  margin-top: 80px;
   width: 540px;
 }
 .todo__top {
@@ -433,5 +433,14 @@ body {
 
   .info {
     margin: 40px 0;
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .todo-container {
+    align-items: center;
+  }
+  .todo {
+    margin-top: 0;
   }
 }
